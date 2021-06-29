@@ -54,7 +54,7 @@ uint16_t SharpDistSensor::getDist()
   if (NULL != this->_analogRead) {
     sensVal = this->_analogRead();
   } else {
-    sensVal = analogRead();
+    sensVal = analogRead(_pin);
   }
 
   // Constrain sensor values to remain within set min-max range
