@@ -179,7 +179,3 @@ void SharpDistSensor::setValMinMax(const uint16_t valMin, const uint16_t valMax)
 void SharpDistSensor::setAnalogReadFunction(uint16_t (*foo)(void)) {
   this->_analogRead = foo;
 }
-
-uint16_t SharpDistSensor::defaultAnalogReadFunction(void) {
-  return analogRead(A0);
-}

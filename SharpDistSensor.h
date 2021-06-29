@@ -114,7 +114,6 @@ public:
   void setAnalogReadFunction(uint16_t (*foo)(void));
 
 private:
-  static uint16_t defaultAnalogReadFunction(void);
   uint16_t (*_analogRead)(void);
 
   // Arduino analog pin the sensor is connected to
