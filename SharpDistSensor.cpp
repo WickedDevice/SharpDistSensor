@@ -42,6 +42,8 @@ SharpDistSensor::SharpDistSensor(const byte pin, const byte size) :
 
   // Set default sensor model to GP2Y0A60SZLF 5V
   setModel(GP2Y0A60SZLF_5V);
+
+  _analogRead = NULL;
 }
 
 // Return the measured distance
@@ -49,7 +51,7 @@ uint16_t SharpDistSensor::getDist()
 {
   // Read analog value from sensor
   uint16_t sensVal;
-  if (this->_analogRead) {
+  if (NULL != this->_analogRead) {
     sensVal = this->analogRead();
   } else {
     sensVal = analogRead();
