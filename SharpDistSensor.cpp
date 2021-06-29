@@ -52,7 +52,7 @@ uint16_t SharpDistSensor::getDist()
   // Read analog value from sensor
   uint16_t sensVal;
   if (NULL != this->_analogRead) {
-    sensVal = this->analogRead();
+    sensVal = this->_analogRead();
   } else {
     sensVal = analogRead();
   }
