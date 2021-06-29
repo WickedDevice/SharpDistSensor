@@ -40,9 +40,6 @@ SharpDistSensor::SharpDistSensor(const byte pin, const byte size) :
   // Window size of the median filter (1 = no filtering)
   _mfSize = size;
 
-  // bind default analogRead function
-  setAnalogReadFunction(&this->defaultAnalogReadFunction);
-
   // Set default sensor model to GP2Y0A60SZLF 5V
   setModel(GP2Y0A60SZLF_5V);
 }
@@ -51,7 +48,12 @@ SharpDistSensor::SharpDistSensor(const byte pin, const byte size) :
 uint16_t SharpDistSensor::getDist()
 {
   // Read analog value from sensor
-  uint16_t sensVal = this->_analogRead();
+  uint16_t sensVal;
+  if (this->_analogRead) {
+    sensVal = this->analogRead();
+  } else {
+    sensVal = analogRead();
+  }
 
   // Constrain sensor values to remain within set min-max range
   sensVal = constrain(sensVal, _valMin, _valMax);
