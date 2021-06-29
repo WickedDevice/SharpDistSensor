@@ -110,7 +110,13 @@ public:
   // Set the analog value range for which to return a distance
   void setValMinMax(const uint16_t valMin, const uint16_t valMax);
 
+
+  void setAnalogReadFunction(uint16_t (*foo)(void));
+
 private:
+  static uint16_t defaultAnalogReadFunction(void);
+  uint16_t (*_analogRead)(void);
+
   // Arduino analog pin the sensor is connected to
   byte _pin;
 
